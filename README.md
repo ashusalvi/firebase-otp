@@ -37,7 +37,7 @@ URL : https://firebase.google.com/docs/auth/web/phone-auth
    # 2) Make Div for recaptcha
     <div id="recaptcha-container"></div>
     
-   # 3)Set inivisible recaptcha
+   # 3)Set inivisible recaptcha & Send OTP to mobile number & Enter OTP to varification
       <script>
        firebase.auth().languageCode = 'en';
           window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
@@ -51,10 +51,8 @@ URL : https://firebase.google.com/docs/auth/web/phone-auth
           recaptchaVerifier.render().then(function(widgetId) {
               window.recaptchaWidgetId = widgetId;
           });
-         </script>
          
-      # 4)Send OTP to mobile number
-        <script>
+      //Send OTP to mobile number
           var phoneNumber = '+91<****Enter mobile number*****>';
           var appVerifier = window.recaptchaVerifier;
           firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
@@ -72,8 +70,7 @@ URL : https://firebase.google.com/docs/auth/web/phone-auth
               });
         </script>
         
-        # 5)Enter OTP to varification
-        <script>
+     //Enter OTP to varification
              var code = '123456';
               window.confirmationResult.confirm(code).then(function (result) {
                 // User signed in successfully.
